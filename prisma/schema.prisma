@@ -5,7 +5,6 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
- directUrl = env("DIRECT_DATABASE_URL")
 }
 
 model Account {
@@ -81,6 +80,6 @@ model Service {
   name         String
   description  String
   price        Decimal    @db.Decimal(10, 2)
-  imageUrl     String
+  imageUrl    String
   bookings     Booking[]
 }
