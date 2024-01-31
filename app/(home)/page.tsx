@@ -1,10 +1,11 @@
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
+import { Key } from "react";
 import { db } from "../_lib/prisma";
 
-import { Key } from "react";
 import { BookingCard } from "../_components/booking-card";
 import { Header } from "../_components/header";
+import { Search } from "../_components/search";
 import { SectionTitle } from "../_components/section-title";
 import {
   Carousel,
@@ -12,7 +13,6 @@ import {
   CarouselItem,
 } from "../_components/ui/carousel";
 import { RecommendedCard } from "./_components/recommended-card";
-import { Search } from "./_components/search";
 
 export default async function Home() {
   const barbershops = await db.barbershop.findMany({});
