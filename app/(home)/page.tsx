@@ -6,7 +6,7 @@ import { Key } from "react";
 import { BookingCard } from "../_components/bookingCard";
 import { Header } from "../_components/header";
 import { SectionTitle } from "../_components/sectionTitle";
-import { RecomendedCard } from "./_components/RecomendedCard";
+import { RecommendedCard } from "./_components/RecommendedCard";
 import { Search } from "./_components/Search";
 
 export default async function Home() {
@@ -32,7 +32,16 @@ export default async function Home() {
         <SectionTitle title="recomendados" />
         <div className="flex gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden">
           {barbershops.map((barbershop: { id: Key | null | undefined }) => (
-            <RecomendedCard key={barbershop.id} barbershop={barbershop} />
+            <RecommendedCard key={barbershop.id} barbershop={barbershop} />
+          ))}
+        </div>
+      </div>
+
+      <div className="space-y-3 px-6 pb-12 pt-6">
+        <SectionTitle title="popular" />
+        <div className="flex gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden">
+          {barbershops.map((barbershop: { id: Key | null | undefined }) => (
+            <RecommendedCard key={barbershop.id} barbershop={barbershop} />
           ))}
         </div>
       </div>

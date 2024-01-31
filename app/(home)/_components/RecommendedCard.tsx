@@ -5,11 +5,11 @@ import { Barbershop } from "@prisma/client";
 import { StarIcon } from "lucide-react";
 import Image from "next/image";
 
-interface RecomendedCardProps {
+interface RecommendedCardProps {
   barbershop: Barbershop;
 }
 
-export function RecomendedCard({ barbershop }: RecomendedCardProps) {
+export function RecommendedCard({ barbershop }: RecommendedCardProps) {
   return (
     <div>
       <Card className="min-w-40 max-w-40 rounded-2xl">
