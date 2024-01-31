@@ -43,7 +43,7 @@ export default async function Home() {
           className="mx-auto w-full"
         >
           <CarouselContent>
-            {Array.from({ length: 5 }).map((_, index) => (
+            {Array.from({ length: 2 }).map((_, index) => (
               <CarouselItem key={index} className="flex gap-4">
                 {barbershops.map(
                   (barbershop: { id: Key | null | undefined }) => (
