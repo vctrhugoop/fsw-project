@@ -1,5 +1,6 @@
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
+import { BookingCard } from "../_components/bookingCard";
 import { Header } from "../_components/header";
 import { Search } from "./_components/Search";
 
@@ -19,6 +20,7 @@ export default function Home() {
       </div>
 
       <Search />
+      <BookingCard />
     </div>
   );
 }
