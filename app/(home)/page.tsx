@@ -7,11 +7,6 @@ import { BookingCard } from "../_components/booking-card";
 import { Header } from "../_components/header";
 import { Search } from "../_components/search";
 import { SectionTitle } from "../_components/section-title";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "../_components/ui/carousel";
 import { RecommendedCard } from "./_components/recommended-card";
 
 export default async function Home() {
@@ -36,52 +31,20 @@ export default async function Home() {
 
       <div className="space-y-3 px-6">
         <SectionTitle title="recomendados" />
-        <Carousel
-          opts={{
-            align: "start",
-          }}
-          className="mx-auto w-full"
-        >
-          <CarouselContent>
-            {Array.from({ length: 2 }).map((_, index) => (
-              <CarouselItem key={index} className="flex gap-4">
-                {barbershops.map(
-                  (barbershop: { id: Key | null | undefined }) => (
-                    <RecommendedCard
-                      key={barbershop.id}
-                      barbershop={barbershop}
-                    />
-                  ),
-                )}
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
+        <div className="flex gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden">
+          {barbershops.map((barbershop: { id: Key | null | undefined }) => (
+            <RecommendedCard key={barbershop.id} barbershop={barbershop} />
+          ))}
+        </div>
       </div>
 
       <div className="space-y-3 px-6 pb-12 pt-6">
         <SectionTitle title="popular" />
-        <Carousel
-          opts={{
-            align: "start",
-          }}
-          className="mx-auto w-full"
-        >
-          <CarouselContent>
-            {Array.from({ length: 5 }).map((_, index) => (
-              <CarouselItem key={index} className="flex gap-4">
-                {barbershops.map(
-                  (barbershop: { id: Key | null | undefined }) => (
-                    <RecommendedCard
-                      key={barbershop.id}
-                      barbershop={barbershop}
-                    />
-                  ),
-                )}
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
+        <div className="flex gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden">
+          {barbershops.map((barbershop: { id: Key | null | undefined }) => (
+            <RecommendedCard key={barbershop.id} barbershop={barbershop} />
+          ))}
+        </div>
       </div>
     </div>
   );
