@@ -38,7 +38,7 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="space-y-3 px-6 pb-12 pt-6">
+      <div className="space-y-3 px-6 pt-6">
         <SectionTitle title="popular" />
         <div className="flex gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden">
           {barbershops.map((barbershop: { id: Key | null | undefined }) => (
