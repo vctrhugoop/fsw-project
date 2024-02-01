@@ -7,7 +7,7 @@ import { BookingCard } from "../_components/booking-card";
 import { Header } from "../_components/header/header";
 import { Search } from "../_components/search";
 import { SectionTitle } from "../_components/section-title";
-import { RecommendedCard } from "./_components/recommended-card";
+import { BarbershopItem } from "./_components/barbershop-item";
 
 export default async function Home() {
   const barbershops = await db.barbershop.findMany({});
@@ -33,7 +33,7 @@ export default async function Home() {
         <SectionTitle title="recomendados" />
         <div className="flex gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden">
           {barbershops.map((barbershop: { id: Key | null | undefined }) => (
-            <RecommendedCard key={barbershop.id} barbershop={barbershop} />
+            <BarbershopItem key={barbershop.id} barbershop={barbershop} />
           ))}
         </div>
       </div>
@@ -42,7 +42,7 @@ export default async function Home() {
         <SectionTitle title="popular" />
         <div className="flex gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden">
           {barbershops.map((barbershop: { id: Key | null | undefined }) => (
-            <RecommendedCard key={barbershop.id} barbershop={barbershop} />
+            <BarbershopItem key={barbershop.id} barbershop={barbershop} />
           ))}
         </div>
       </div>
