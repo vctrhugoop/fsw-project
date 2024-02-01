@@ -4,7 +4,7 @@ import { Key } from "react";
 import { db } from "../_lib/prisma";
 
 import { BookingCard } from "../_components/booking-card";
-import { Header } from "../_components/header";
+import { Header } from "../_components/header/header";
 import { Search } from "../_components/search";
 import { SectionTitle } from "../_components/section-title";
 import { RecommendedCard } from "./_components/recommended-card";
