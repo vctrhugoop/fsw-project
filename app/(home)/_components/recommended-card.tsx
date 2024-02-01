@@ -35,10 +35,8 @@ export function RecommendedCard({ barbershop }: RecommendedCardProps) {
           </div>
           <div className="space-y-3 px-3 pb-3">
             <div>
-              <h2 className="overflow-hidden text-ellipsis text-nowrap font-bold">
-                {barbershop.name}
-              </h2>
-              <p className="overflow-hidden text-ellipsis text-nowrap text-sm text-gray-400">
+              <h2 className="truncate font-bold">{barbershop.name}</h2>
+              <p className="truncate text-sm text-gray-400">
                 {barbershop.address}
               </p>
             </div>
