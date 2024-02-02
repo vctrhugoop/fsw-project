@@ -1,6 +1,5 @@
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
-import { Key } from "react";
 import { db } from "../_lib/prisma";
 
 import { BookingCard } from "../_components/booking-card";
@@ -32,7 +31,7 @@ export default async function Home() {
       <div className="space-y-3 px-6">
         <SectionTitle title="recomendados" />
         <div className="flex gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden">
-          {barbershops.map((barbershop: { id: Key | null | undefined }) => (
+          {barbershops.map((barbershop) => (
             <BarbershopItem key={barbershop.id} barbershop={barbershop} />
           ))}
         </div>
@@ -41,7 +40,7 @@ export default async function Home() {
       <div className="space-y-3 px-6 pt-6">
         <SectionTitle title="popular" />
         <div className="flex gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden">
-          {barbershops.map((barbershop: { id: Key | null | undefined }) => (
+          {barbershops.map((barbershop) => (
             <BarbershopItem key={barbershop.id} barbershop={barbershop} />
           ))}
         </div>
