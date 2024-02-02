@@ -18,7 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} dark`}>
+      <body
+        className={`${inter.className} grid-rows-layout dark grid min-h-screen grid-cols-1`}
+      >
         <AuthProvider>{children}</AuthProvider>
         <Footer />
       </body>
