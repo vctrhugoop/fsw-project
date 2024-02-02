@@ -1,6 +1,6 @@
 import { SectionTitle } from "@/app/_components/section-title";
 import { db } from "@/app/_lib/prisma";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/app/utils/authOpitions";
 import { getServerSession } from "next-auth";
 import { BarberShopInfo } from "./_components/barbershop-info";
 import { ServiceItem } from "./_components/service-item";
