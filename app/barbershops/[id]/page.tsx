@@ -1,6 +1,5 @@
 import { SectionTitle } from "@/app/_components/section-title";
 import { db } from "@/app/_lib/prisma";
-import { Key } from "react";
 import { BarberShopInfo } from "./_components/barbershop-info";
 import { ServiceItem } from "./_components/service-item";
 
@@ -36,7 +35,7 @@ export default async function BarberShopDetails({
       <BarberShopInfo barbershop={barbershop} />
       <div className="space-y-3 px-6 py-5">
         <SectionTitle title="Serviços" />
-        {barbershop.services.map((service: { id: Key | null | undefined }) => (
+        {barbershop.services.map((service) => (
           <ServiceItem key={service.id} service={service} />
         ))}
       </div>
