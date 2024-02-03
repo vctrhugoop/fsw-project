@@ -26,7 +26,7 @@ export function Menu() {
   return (
     <>
       <SheetHeader className="border-b px-5 py-6">
-        <SheetTitle>Menu</SheetTitle>
+        <SheetTitle className="text-left">Menu</SheetTitle>
       </SheetHeader>
 
       {data?.user ? (
