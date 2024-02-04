@@ -17,7 +17,9 @@ import { ptBR } from "date-fns/locale";
 import { Loader2 } from "lucide-react";
 import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
+import router from "next/router";
 import { useMemo, useState } from "react";
+import { toast } from "sonner";
 import { SaveBooking } from "../_actions/saveBooking";
 import { generateDayTimeList } from "../_helpers/hours";
 
@@ -36,8 +38,8 @@ export function ServiceItem({
 
   const [date, setDate] = useState<Date | undefined>(undefined);
   const [hour, setHour] = useState<string | undefined>();
-
   const [submitIsLoading, setSubmitIsLoading] = useState(false);
+  const [sheetIsOpen, setSheetIsOpen] = useState(false);
 
   function handleDate(date: Date | undefined) {
     setDate(date);
@@ -72,6 +74,19 @@ export function ServiceItem({
         barbershopId: barbershop.id,
         userId: (data.user as any).id,
         date: newDate as any,
+      });
+
+      setSheetIsOpen(false);
+      setHour(undefined);
+      setDate(undefined);
+      toast("Reserva realizada com sucesso!", {
+        description: format(newDate, "'Para' dd 'de' MMMM 'às' HH':'mm'.'", {
+          locale: ptBR,
+        }),
+        action: {
+          label: "Visualizar",
+          onClick: () => router.push("/bookings"),
+        },
       });
     } catch (error) {
       console.error(error);
@@ -109,7 +124,7 @@ export function ServiceItem({
                   currency: "BRL",
                 }).format(Number(service.price))}
               </span>
-              <Sheet>
+              <Sheet open={sheetIsOpen} onOpenChange={setSheetIsOpen}>
                 <SheetTrigger>
                   <Button variant="secondary" onClick={handleBooking}>
                     Reservar
