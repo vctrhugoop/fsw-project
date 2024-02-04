@@ -3,6 +3,7 @@
 import { Button } from "@/app/_components/ui/button";
 import { Calendar } from "@/app/_components/ui/calendar";
 import { Card, CardContent } from "@/app/_components/ui/card";
+import { ScrollArea, ScrollBar } from "@/app/_components/ui/scroll-area";
 import {
   Sheet,
   SheetContent,
@@ -203,18 +204,21 @@ export function ServiceItem({
                   />
 
                   {date && (
-                    <div className="flex gap-3 overflow-x-auto border-y px-6 py-5 [&::-webkit-scrollbar]:hidden">
-                      {timeList.map((time) => (
-                        <Button
-                          key={time}
-                          className="rounded-full"
-                          variant={hour === time ? "default" : "outline"}
-                          onClick={() => handleHour(time)}
-                        >
-                          {time}
-                        </Button>
-                      ))}
-                    </div>
+                    <ScrollArea className="w-full whitespace-nowrap">
+                      <div className="flex gap-3 border-y px-6 py-5">
+                        {timeList.map((time) => (
+                          <Button
+                            key={time}
+                            className="rounded-full"
+                            variant={hour === time ? "default" : "outline"}
+                            onClick={() => handleHour(time)}
+                          >
+                            {time}
+                          </Button>
+                        ))}
+                      </div>
+                      <ScrollBar orientation="horizontal" />
+                    </ScrollArea>
                   )}
 
                   <div className="px-6 py-5">

@@ -6,6 +6,7 @@ import { BookingCard } from "../_components/booking-card";
 import { Header } from "../_components/header/header";
 import { Search } from "../_components/search";
 import { SectionTitle } from "../_components/section-title";
+import { ScrollArea, ScrollBar } from "../_components/ui/scroll-area";
 import { BarbershopItem } from "./_components/barbershop-item";
 
 export default async function Home() {
@@ -30,20 +31,26 @@ export default async function Home() {
 
       <div className="space-y-3 px-6">
         <SectionTitle title="recomendados" />
-        <div className="flex gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden">
-          {barbershops.map((barbershop) => (
-            <BarbershopItem key={barbershop.id} barbershop={barbershop} />
-          ))}
-        </div>
+        <ScrollArea className="w-full whitespace-nowrap">
+          <div className="flex gap-4 pb-4">
+            {barbershops.map((barbershop) => (
+              <BarbershopItem key={barbershop.id} barbershop={barbershop} />
+            ))}
+          </div>
+          <ScrollBar orientation="horizontal" />
+        </ScrollArea>
       </div>
 
       <div className="space-y-3 px-6 pt-6">
         <SectionTitle title="popular" />
-        <div className="flex gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden">
-          {barbershops.map((barbershop) => (
-            <BarbershopItem key={barbershop.id} barbershop={barbershop} />
-          ))}
-        </div>
+        <ScrollArea className="w-full whitespace-nowrap">
+          <div className="flex gap-4 pb-4">
+            {barbershops.map((barbershop) => (
+              <BarbershopItem key={barbershop.id} barbershop={barbershop} />
+            ))}
+          </div>
+          <ScrollBar orientation="horizontal" />
+        </ScrollArea>
       </div>
     </div>
   );
