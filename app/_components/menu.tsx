@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
+import { AvatarFallback } from "./ui/avatar";
 import { Button } from "./ui/button";
 import { SheetHeader, SheetTitle } from "./ui/sheet";
 
@@ -18,11 +19,13 @@ export function Menu() {
 
   function handleLogin() {
     signIn("google");
+    console.log(data?.user?.name?.charAt(0));
   }
 
   function haddleLogout() {
     signOut();
   }
+
   return (
     <>
       <SheetHeader className="border-b px-5 py-6">
@@ -38,6 +41,7 @@ export function Menu() {
                   src={data.user?.image ?? ""}
                   className="h-10 w-10 rounded-full"
                 />
+                <AvatarFallback>{data.user?.name?.charAt(0)}</AvatarFallback>
               </Avatar>
               <h2 className="font-bold">{data.user.name}</h2>
             </div>
@@ -79,7 +83,7 @@ export function Menu() {
 
         {data?.user && (
           <Button variant="outline" className="justify-start gap-2" asChild>
-            <Link href="/booking">
+            <Link href="/bookings">
               <CalendarDays size={16} />
               Agendamentos
             </Link>
