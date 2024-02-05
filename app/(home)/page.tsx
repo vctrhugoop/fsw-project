@@ -3,7 +3,6 @@ import { ptBR } from "date-fns/locale";
 import { db } from "../_lib/prisma";
 
 import { getServerSession } from "next-auth";
-import { BookingCard } from "../_components/booking-card";
 import { Header } from "../_components/header/header";
 import { Search } from "../_components/search";
 import { SectionTitle } from "../_components/section-title";
@@ -16,9 +15,9 @@ export default async function Home() {
   const barbershops = await db.barbershop.findMany({});
 
   return (
-    <div>
+    <div className="space-y-6 pb-12">
       <Header />
-      <div className="px-5 py-6">
+      <div className="px-5">
         <h2 className="text-xl">
           {session?.user
             ? `Olá, ${session.user.name?.split(" ")[0]}!`
@@ -32,7 +31,7 @@ export default async function Home() {
       </div>
 
       <Search />
-      <BookingCard />
+      {/* <BookingCard /> */}
 
       <div className="space-y-3 px-6">
         <SectionTitle title="recomendados" />
@@ -46,7 +45,7 @@ export default async function Home() {
         </ScrollArea>
       </div>
 
-      <div className="space-y-3 px-6 pt-6">
+      <div className="space-y-3 px-6">
         <SectionTitle title="popular" />
         <ScrollArea className="w-full whitespace-nowrap">
           <div className="flex gap-4 pb-4">

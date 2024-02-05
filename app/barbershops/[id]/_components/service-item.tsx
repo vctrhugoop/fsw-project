@@ -18,7 +18,7 @@ import { ptBR } from "date-fns/locale";
 import { Loader2 } from "lucide-react";
 import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
-import router from "next/router";
+import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import { GetDayBookings } from "../_actions/get-day-bookings";
@@ -36,6 +36,7 @@ export function ServiceItem({
   isAuthenticated,
   barbershop,
 }: ServiceItemProps) {
+  const router = useRouter();
   const { data } = useSession();
 
   const [date, setDate] = useState<Date | undefined>(undefined);
