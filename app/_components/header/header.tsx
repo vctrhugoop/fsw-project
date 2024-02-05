@@ -1,6 +1,7 @@
 "use client";
 
 import { MenuIcon } from "lucide-react";
+import Link from "next/link";
 import { Menu } from "../menu";
 import { Button } from "../ui/button";
 import { Card, CardContent } from "../ui/card";
@@ -11,7 +12,10 @@ export function Header() {
   return (
     <Card className="rounded-none ">
       <CardContent className="flex items-center justify-between px-5 py-6">
-        <Logo />
+        <Link href="/">
+          <Logo />
+        </Link>
+
         <Sheet>
           <SheetTrigger>
             <Button variant="outline" size="icon">
