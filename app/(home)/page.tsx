@@ -3,16 +3,35 @@ import { ptBR } from "date-fns/locale";
 import { db } from "../_lib/prisma";
 
 import { getServerSession } from "next-auth";
+import { BookingCard } from "../_components/booking-card";
 import { Header } from "../_components/header/header";
 import { Search } from "../_components/search";
 import { SectionTitle } from "../_components/section-title";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "../_components/ui/carousel";
 import { ScrollArea, ScrollBar } from "../_components/ui/scroll-area";
 import { authOptions } from "../utils/authOpitions";
 import { BarbershopItem } from "./_components/barbershop-item";
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
+
   const barbershops = await db.barbershop.findMany({});
+
+  const bookings = session?.user
+    ? await db.booking.findMany({
+        where: {
+          userId: (session.user as any).id,
+        },
+        include: {
+          service: true,
+          barbershop: true,
+        },
+      })
+    : [];
 
   return (
     <div className="space-y-6 pb-12">
@@ -31,7 +50,16 @@ export default async function Home() {
       </div>
 
       <Search />
-      {/* <BookingCard /> */}
+
+      <Carousel className="mx-auto w-full px-5">
+        <CarouselContent>
+          {bookings.map((booking) => (
+            <CarouselItem key={booking.id}>
+              <BookingCard booking={booking} />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
 
       <div className="space-y-3 px-6">
         <SectionTitle title="recomendados" />

@@ -18,7 +18,7 @@ export function BookingCard({ booking }: BookingCardProps) {
   const isBookingConfirmed = isFuture(booking.date);
 
   return (
-    <Card>
+    <Card className="flex-1">
       <CardContent className="flex justify-between p-0">
         <div className="flex flex-col gap-3 p-3">
           <Badge
