@@ -35,15 +35,27 @@ export default async function Bookings() {
       <h1 className="px-5 text-xl font-bold">Agendamento</h1>
       <div className="space-y-3 px-5">
         <SectionTitle title="confirmadas" />
-        {confirmedBoookings.map((booking) => (
-          <BookingCard key={booking.id} booking={booking} />
-        ))}
+        {confirmedBoookings.length > 0 ? (
+          confirmedBoookings.map((booking) => (
+            <BookingCard key={booking.id} booking={booking} />
+          ))
+        ) : (
+          <p className="text-center text-sm text-gray-400">
+            Nenhum agendamento confirmado!
+          </p>
+        )}
       </div>
       <div className="space-y-3 px-5">
         <SectionTitle title="finalizados" />
-        {finishedBoookings.map((booking) => (
-          <BookingCard key={booking.id} booking={booking} />
-        ))}
+        {finishedBoookings.length > 0 ? (
+          finishedBoookings.map((booking) => (
+            <BookingCard key={booking.id} booking={booking} />
+          ))
+        ) : (
+          <p className="text-center text-sm text-gray-400">
+            Nenhum agendamento finalizado!
+          </p>
+        )}
       </div>
     </div>
   );
