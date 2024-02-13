@@ -11,6 +11,8 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
 } from "../_components/ui/carousel";
 import { ScrollArea, ScrollBar } from "../_components/ui/scroll-area";
 import { authOptions } from "../utils/authOpitions";
@@ -59,6 +61,8 @@ export default async function Home() {
             </CarouselItem>
           ))}
         </CarouselContent>
+        <CarouselPrevious variant="ghost" />
+        <CarouselNext variant="ghost" />
       </Carousel>
 
       <div className="space-y-3 px-6">
