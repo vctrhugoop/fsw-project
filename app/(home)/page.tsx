@@ -53,17 +53,19 @@ export default async function Home() {
 
       <Search />
 
-      <Carousel className="mx-auto w-full px-5">
-        <CarouselContent>
-          {bookings.map((booking) => (
-            <CarouselItem key={booking.id}>
-              <BookingCard booking={booking} />
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious variant="ghost" />
-        <CarouselNext variant="ghost" />
-      </Carousel>
+      {bookings.length > 0 ? (
+        <Carousel className="mx-auto w-full px-5">
+          <CarouselContent>
+            {bookings.map((booking) => (
+              <CarouselItem key={booking.id}>
+                <BookingCard booking={booking} />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious variant="ghost" />
+          <CarouselNext variant="ghost" />
+        </Carousel>
+      ) : null}
 
       <div className="space-y-3 px-6">
         <SectionTitle title="recomendados" />
